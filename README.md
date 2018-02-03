@@ -38,3 +38,10 @@ You will need to know how to set up a basic alexa skill.
   ]
 }
 ```
+### Sample Utterances
+``` javascript
+GarageIntent whats up with my garage
+GarageIntent whats up
+GarageIntentOpen to open
+GarageIntentClose to shut
+```
