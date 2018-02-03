@@ -13,7 +13,12 @@ Ask Alexa to open close and check the status of your door.
 ### Usage
 You will need to know how to set up a basic alexa skill.
 
-## Intent Schema
+### Invocation Name
+```javascript
+my garage
+```
+
+### Intent Schema
 ```javascript
 {
   "intents": [
