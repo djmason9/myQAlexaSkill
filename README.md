@@ -54,7 +54,7 @@ GarageIntentClose to shut
 ### The Code
 You should be able to copy and paste the index.js file into your lambda console (function code)
 
-You will just need to change 4 things in the file.
+You will just need to change 3 things in the file.
 ``` javascript
 // your id will look something like amzn1.ask.skill.d246ed4f-4a80-477a-a9bf-12345678
 const APP_ID = "[YOUR APP ID FOR THE ALEXA SKILL]";  // TODO replace with your app ID (OPTIONAL).
