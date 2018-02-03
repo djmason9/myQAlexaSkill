@@ -4,7 +4,7 @@ Alexa skill to allow control over your myQ connected garage door
 ### Features
 Ask Alexa to open close and check the status of your door.
 
-- "alexa ask my garage to close"
+- "alexa ask my garage to shut"
 
 - "alexa ask my garage to open"
 
