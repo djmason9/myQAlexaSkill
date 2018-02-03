@@ -6,6 +6,8 @@ const API_VER = '/api/v4';
 const Alexa = require('alexa-sdk');
 var https = require('https');
 const APP_ID = "[YOUR APP ID FOR THE ALEXA SKILL]";  // TODO replace with your app ID (OPTIONAL).
+
+
 let config = new Object();
 
 let states = {
@@ -56,6 +58,7 @@ function getToken(callback){
     var loginCreds = {"password":"[YOUR PASSWORD]","username":"[YOUR USERNAME]"};
     config.deviceId = "[YOUR DEVICE ID]";
 
+
     makeRequest("post",API_VER + '/User/Validate',loginCreds, res => {
             var resObj = JSON.parse(res)
             if (resObj.SecurityToken === undefined) {
@@ -90,9 +93,13 @@ function closeGarage(cb){
           console.log(body);
         makeRequest("put",API_VER + "/DeviceAttribute/PutDeviceAttribute",body, cb);
     });
-    
 }
 
+function getState(cb){
+    getToken(()=>{
+        makeRequest("get",API_VER + "/DeviceAttribute/GetDeviceAttribute?myQDeviceId=" + config.deviceId + "&attributeName=doorstate",undefined, cb);
+    });
+}
 
 function makeRequest(type, path, bodyData, callback){
 
@@ -124,8 +131,6 @@ function makeRequest(type, path, bodyData, callback){
         req.write(JSON.stringify(bodyData)); //add to body 
     }
     req.end();
-
-
 }
 
 
@@ -149,8 +154,12 @@ const handlers = {
         });
     },
     'GetGarageState': function () {
-        //TODO: //get state
-        this.emit(':tell',"Nothing yet whats up with you?");
+        
+        getState(res => {     
+            console.log(res);
+            this.response.speak('Your garage is ' + states[JSON.parse(res).AttributeValue]);
+            this.emit(':responseReady');
+        });
     },
 
     'AMAZON.HelpIntent': function () {
@@ -176,3 +185,5 @@ exports.handler = (event, context, callback) => {
     alexa.execute();
 
 };
+
+
