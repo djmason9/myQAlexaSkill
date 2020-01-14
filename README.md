@@ -21,26 +21,52 @@ my garage
 ### Intent Schema
 ```javascript
 {
-  "intents": [
-    {
-      "intent": "AMAZON.CancelIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "GarageIntent"
-    },
-    {
-      "intent": "GarageIntentOpen"
-    },
-    {
-      "intent": "GarageIntentClose"
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "my garage",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GarageIntent",
+                    "slots": [],
+                    "samples": [
+                        "whats up with my garage",
+                        "whats up"
+                    ]
+                },
+                {
+                    "name": "GarageIntentClose",
+                    "slots": [],
+                    "samples": [
+                        "to shut"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GarageIntentOpen",
+                    "slots": [],
+                    "samples": [
+                        "to open"
+                    ]
+                }
+            ],
+            "types": []
+        }
     }
-  ]
 }
 ```
 ### Sample Utterances
